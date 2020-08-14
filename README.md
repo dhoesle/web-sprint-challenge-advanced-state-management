@@ -25,29 +25,29 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. What problem does the context API help solve?
 
-  It is a great tool to help drastically simplify state management
+    It is a great tool to help drastically simplify state management
 
 2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 
-  Actions: actions contain properties related to some action that happens in our apps. Every action object is required to have a type property, which will “inform” the reducer actions happening in the app. 
+    Actions: actions contain properties related to some action that happens in our apps. Every action object is required to have a type property, which will “inform” the reducer actions happening in the app. 
 
-  Reducers: It is preferable when you have complex logic that you have to deal with in a component, or when you find yourself with a lot of state properties (more than 3) in a single component.
+    Reducers: It is preferable when you have complex logic that you have to deal with in a component, or when you find yourself with a lot of state properties (more than 3) in a single component.
 
-  Store: Everything that changes within your application is represented by a single JavaScript Object known as the store. The store contains our state for our application.
+    Store: Everything that changes within your application is represented by a single JavaScript Object known as the store. The store contains our state for our application.
 
 3. What is the difference between Application state and Component state? When would be a good time to use one over the other?
 
-  Component local state is state that is local to a single component and cannot be seen outside of this component.
+    Component local state is state that is local to a single component and cannot be seen outside of this component.
 
-  Application state is the "global" state that all components in the component tree can access, through cursors.
+    Application state is the "global" state that all components in the component tree can access, through cursors.
 
 4. Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 
-  Redux Thunk is a middleware that lets you call action creators that return a function instead of an action object.
+    Redux Thunk is a middleware that lets you call action creators that return a function instead of an action object.
 
 5. What is your favorite state management system you've learned and this sprint? Please explain why!
 
-    By far context api is my favorite. I am a very minimalistic person and I prefer things to be as streamlined and simplistic as possible. Although redux makes sense when you are able to fully grasp and understand it There are a lot of different parts that can tend to clutter my work space and complicate things more then tey already are.
+    By far context api is my favorite. I am a very minimalistic person and I prefer things to be as streamlined and simplistic as possible. Although redux makes sense when you are able to fully grasp and understand it There are a lot of different parts that can tend to clutter my work space and complicate things more then tey already are.  However, I understand where redux is necessary in large scale apps.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 

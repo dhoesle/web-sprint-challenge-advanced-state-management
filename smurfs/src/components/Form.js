@@ -1,7 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { connect } from 'react-redux';
+import { addSmurf } from '../actions'
+const initialFormValues = {
+    name: '',
+    age: '',
+    height: '',
+    id: Date.now()
+  }
+const Form = () => {
+    const [formValues, setFormValues] = useState(initialFormValues)
 
-const Form = props => {
-    const { values, onSubmit, onInputChange } = props
+    const onSubmit = evt => {
+        evt.preventDefault()
+        const newSmurf = {
+          name: formValues.name,
+          age: parseInt(formValues.age, 10),
+          height: formValues.height,
+        }
+        addSmurf(newSmurf)
+        setFormValues(initialFormValues)
+        window.location.reload(false);
+    }
+
+    const onInputChange = evt => {
+        evt.preventDefault()
+        const { name, value } = evt.target
+    
+        setFormValues({
+          ...formValues,
+          [name]: value
+        })
+    }
 
     return (
         <form
@@ -10,7 +39,7 @@ const Form = props => {
             <div>
                 <label>Name
                     <input
-                        value={values.name}
+                        value={formValues.name}
                         onChange={onInputChange}
                         name='name'
                         text='text'
@@ -18,15 +47,16 @@ const Form = props => {
                 </label>
                 <label>Age
                     <input
-                        value={values.age}
+                        value={formValues.age}
                         onChange={onInputChange}
                         name='age'
-                        text='text'
+                        type='number'
+                        pattern='[0-9]*'
                     />                    
                 </label>
                 <label>Height
                     <input
-                        value={values.height}
+                        value={formValues.height}
                         onChange={onInputChange}
                         name='height'
                         text='text'
@@ -39,4 +69,14 @@ const Form = props => {
     )
 }
 
-export default Form;
+const mapStateToProps = state => {
+    return {
+        smurfs: state.smurfs
+    }
+}
+const mapDispatchToProps = { addSmurf };
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Form);

@@ -1,22 +1,40 @@
-import React, { useContext } from 'react'
-import { SmurfContext } from './App'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux';
+import { getSmurfs } from '../actions'
+import { Link } from 'react-router-dom'
 
-import Smurf from './Smurf'
 
-const SmurfList = () => {
-    const { smurfs } = useContext(SmurfContext)
-    console.log("SmurfList -> smurfs", smurfs)
+const  SmurfList = (props) => {
     
+    useEffect(() => {
+        props.getSmurfs();
+    }, []);
+
+
+        
     return (
         <div>
-            {smurfs.map(smurf => (
-                <Smurf 
-                    key={smurf.id}
-                    smurf={smurf}
-                
-                />
+            {props.smurfs.map((smurf) => (
+
+                <ul>
+                    <Link to={`/smurfs/${smurf.id}`}>
+                        <h2 key={smurf.id} >{smurf.name}</h2>
+                    </Link>
+                </ul>
             ))}
         </div>
     )
 }
-export default SmurfList
+
+
+const mapStateToProps = state => {
+    return {
+        smurfs: state.smurfs
+    }
+}
+const mapDispatchToProps = { getSmurfs };
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(SmurfList);
